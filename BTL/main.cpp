@@ -29,7 +29,7 @@ void drawTree (){ //Gulmohar tree
     rules['W'] = string("+X[-W]Z");
     rules['X'] = string("-W[+X]Z");
     rules['Y'] = string("YZ");
-    rules['Z'] = string("[-FFF][+FFF]F");
+    rules['Z'] = string("FFFFFFFFF[-FFFFFFF][+FFFF]");
     GraphicalLSystem l0("W", rules);
     Colour brown(0.545098, 0.270588, 0.0745098);
     Colour green(0, 0.5, 0);
@@ -49,12 +49,12 @@ void drawTree (){ //Gulmohar tree
     l0.AddPhenotype('/', Phenotype(ROTATE, -36));
     l0.AddPhenotype('\\', Phenotype(ROTATE, 36));
     */
-    l0.AddPhenotype('F', Phenotype(DRAW_FORWARD, 7.5, green));
+    l0.AddPhenotype('F', Phenotype(DRAW_FORWARD, 6.0, green));
     l0.AddPhenotype('[', Phenotype(SAVE));
     l0.AddPhenotype(']', Phenotype(RETURN));
-    l0.AddPhenotype('+', Phenotype(ROTATE, +22.5));
-    l0.AddPhenotype('-', Phenotype(ROTATE, -22.5));
-    for(int i=0; i<10; i++)
+    l0.AddPhenotype('+', Phenotype(ROTATE, +20));
+    l0.AddPhenotype('-', Phenotype(ROTATE, -20));
+    for(int i=0; i<8; i++)
         l0.GenerateNext();
     l0.Draw(window_ptr, 500, 100, 90.0);
 }
@@ -69,3 +69,4 @@ int main(int argc, char** argv) {
     window.Display(drawTree);
     return 0;
 }
+
