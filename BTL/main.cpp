@@ -25,12 +25,9 @@ void drawTree (){ //Gulmohar tree
     GraphicalLSystem l0("S", rules);
     */
 
-    rules['V'] = string("[+++W][---W]YV");
-    rules['W'] = string("+X[-W]Z");
-    rules['X'] = string("-W[+X]Z");
-    rules['Y'] = string("YZ");
-    rules['Z'] = string("FFFFFFFFF[-FFFFFFF][+FFFF]");
-    GraphicalLSystem l0("W", rules);
+    rules['F'] = "CFF-[C-F+F]+[C+F-F]";
+    rules['X'] = "CFF+[C+F]+[C-F]";
+    GraphicalLSystem l0("FX", rules);
     Colour brown(0.545098, 0.270588, 0.0745098);
     Colour green(0, 0.5, 0);
     Colour yellow(1, 0.5, 0);
@@ -54,7 +51,8 @@ void drawTree (){ //Gulmohar tree
     l0.AddPhenotype(']', Phenotype(RETURN));
     l0.AddPhenotype('+', Phenotype(ROTATE, +20));
     l0.AddPhenotype('-', Phenotype(ROTATE, -20));
-    for(int i=0; i<8; i++)
+    l0.AddPhenotype('C', Phenotype(NOTHING, 0.1, green));
+    for(int i=0; i<5; i++)
         l0.GenerateNext();
     l0.Draw(window_ptr, 500, 100, 90.0);
 }
@@ -64,7 +62,7 @@ int main(int argc, char** argv) {
     pair <Colour, double> bc;
     Colour bc_colour(0.0, 0.0, 0.0);
     bc = make_pair(bc_colour, 0.0);
-    Window window = Window ( "window1", 1000, 1000, bc);
+    Window window = Window ( "cay thi la", 1000, 1000, bc);
     window_ptr = &window;
     window.Display(drawTree);
     return 0;
